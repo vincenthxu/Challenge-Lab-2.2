@@ -1,4 +1,6 @@
-﻿namespace Challenge_Lab_2._2
+﻿using System.Text;
+
+namespace Challenge_Lab_2._2
 {
     internal class Program
     {
@@ -22,7 +24,24 @@
                 }
 
                 Console.Write("password: ");
-                pass = Console.ReadLine();
+
+                StringBuilder userPasswordInput = new StringBuilder();
+                ConsoleKeyInfo consoleKeyInfo;
+                bool getUserPassword = true;
+                while(getUserPassword)
+                {
+                    consoleKeyInfo = Console.ReadKey(true);
+                    if (consoleKeyInfo.KeyChar != 13)
+                    {
+                        userPasswordInput.Append(consoleKeyInfo.KeyChar);
+                    }
+                    else
+                    {
+                        getUserPassword = false;
+                    }
+                }
+
+                pass = userPasswordInput.ToString();
 
                 Console.Clear();
 
